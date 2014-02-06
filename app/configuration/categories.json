@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Neuheiten",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Wünsche Korb",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Tops",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Hemden/Blusen",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Cadigans/Pullover",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Jäcke/Blazer/Mäntel",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Kleider",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Röcke",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Hosen/Jeans",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Wäsche/Strümpfe",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Accessories",
+        "image": "../images/munte.jpg"
+    },
+    {
+        "name": "Schuhe",
+        "image": "../images/munte.jpg"
+    },
+]

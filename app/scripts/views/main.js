@@ -4,15 +4,21 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'logging',
     'templates',
-    'mustache'
-], function ($, _, Backbone, JST, mustache) {
+    'mustache',
+    'data'
+], function ($, _, Backbone, $logging, JST, mustache, $data) {
     'use strict';
 
     var MainView = Backbone.View.extend({
         template: JST['main-template'],
         render: function() {
-            this.$el.html(mustache.render(this.template));
+
+            // Get categories from data service
+            var categories = $data.getCategoryItems();
+
+            this.$el.html(mustache.render(this.template, categories.toJSON()));
             return this;
         }
     });

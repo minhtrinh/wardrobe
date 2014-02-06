@@ -4,9 +4,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'logging',
     'templates',
     'mustache'
-], function ($, _, Backbone, JST, mustache) {
+], function ($, _, Backbone, $logging, JST, mustache) {
     'use strict';
 
     var TopbarView = Backbone.View.extend({
