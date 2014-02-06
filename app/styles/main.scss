@@ -1,0 +1,24 @@
+/*= require foundation */
+
+//load + process foundation
+@import "../bower_components/foundation/scss/foundation";
+
+/* Space out content a bit */
+body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.appContent {
+    position: absolute;
+    top: 4.35rem;
+    bottom: 0px;
+    width: 100%;
+}
+
+@import "pages/mainPage";
