@@ -29,9 +29,10 @@ require.config({
         camera: '../scripts/services/camera',
         data: '../scripts/services/data',
         logging: '../scripts/services/logging',
+        fileSystem: '../scripts/services/fileSystem',
 
         // Foundation
-        foundation: '../bower_components/foundation/js/foundation.min'
+        foundation: '../bower_components/foundation/js/foundation'
     }
 });
 
@@ -41,14 +42,31 @@ require([
     'backbone',
     'routes/main',
     'data',
+    'fileSystem',
     'foundation'
-], function ($, _, Backbone, Router, $data) {
+], function ($, _, Backbone, Router, $data, $fileSystem) {
 
+    // Killing zombie views by transition
+    Backbone.View.prototype.close = function(){
+        this.remove();
+        this.unbind();
+    };
+
+    var initPlugins = function() {
+        $fileSystem.init();
+    };
     $data.init();
 
     new Router();
     Backbone.history.start();
 
     //= require foundation
-    $(document).foundation();
+    $(document).foundation({
+        orbit: {
+            timer: false
+        }
+    });
+
+    document.addEventListener('deviceready', initPlugins, false);
+
 });
