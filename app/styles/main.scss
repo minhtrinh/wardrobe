@@ -16,9 +16,10 @@ body {
 
 .appContent {
     position: absolute;
-    top: 4.35rem;
+    top: 5rem;
     bottom: 0px;
     width: 100%;
 }
 
 @import "pages/mainPage";
+@import "pages/imagesGallery";

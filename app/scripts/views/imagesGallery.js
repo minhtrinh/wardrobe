@@ -23,6 +23,7 @@ define([
             });
             return this;
         },
+        // TODO: need to check how to handle close event of Backbone.View
         close: function() {
             $logging.d('Closing imagesGallery');
         }

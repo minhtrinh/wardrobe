@@ -18,20 +18,20 @@ define([
         categories: function() {
             // Render top bar
             var topbar = new Topbar();
-            $('.appBar').empty().append(topbar.render().el);
+            $('.appBar').html(topbar.render().el);
 
             // Render main view
             var mainView = new MainView();
-            $('.appContent').empty().append(mainView.render().el);
+            $('.appContent').html(mainView.render().el);
         },
         gallery: function(id) {
             // Render top bar
             var topbar = new Topbar();
-            $('.appBar').empty().append(topbar.render().el);
+            $('.appBar').html(topbar.render().el);
 
             // Render images gallery of a category
             var imagesGallery = new ImagesGallery();
-            $('.appContent').empty().append(imagesGallery.render().el);
+            $('.appContent').html(imagesGallery.render().el);
         }
 
     });
