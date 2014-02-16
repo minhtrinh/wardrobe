@@ -1,10 +1,25 @@
 <ul class="categories-slide small-block-grid-2 medium-block-grid-3 large-block-grid-4">
     {{#.}}
     <li>
-        <a href="#gallery/{{id}}" class="th">
-            <img class="category-thumbnails" src="{{image}}" >
-            <p class="category-caption">{{name}}</p>
+        <a href="#gallery/{{id}}" class="th" id="{{id}}">
+            <img class="category-thumbnails" src="{{image}}" id="{{id}}">
         </a>
+        <p class="category-caption" id="{{id}}">{{name}}</p>
+        <div>
+            <input class="edit-caption" id="{{id}}" type="text" value="{{name}}" style="display:none;"/>
+        </div>
+        
     </li>
     {{/.}}
+    <li>
+        <a class="th new-category">
+            <img src="http://placehold.it/150x150" >
+        </a>
+        <p class="category-caption" id="new" style="display:none;"></p>
+        <div>
+            <input class="edit-caption" id = "new" type="text" value="Neue Kategorie" style="display:none;"/>
+        </div>
+        
+    </li>
+
 </ul>

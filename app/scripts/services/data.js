@@ -3,11 +3,14 @@
 define('data', [
     'logging',
     'models/category',
-    'collections/categories'
-], function($logging, Category, Categories) {
+    'collections/categories',
+    'models/image',
+    'collections/images'
+], function($logging, Category, Categories, Image, Images) {
     'use strict';
 
-    var categories;
+    var categories,
+        images;
 
     /**
      * Public APIs
@@ -38,9 +41,15 @@ define('data', [
                 }
             });
 
+            images = new Images();
+            images.fetch();
+
         },
         getCategoryItems: function() {
             return categories;
+        },
+        getImageItems: function() {
+            return images;
         }
     };
 });

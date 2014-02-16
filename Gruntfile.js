@@ -266,7 +266,9 @@ module.exports = function (grunt) {
                         'styles/fonts/{,*/}*.*',
                         'bower_components/sass-bootstrap/fonts/*.*'
                     ]
-                }]
+                },
+                {expand: true, flatten: true, src: ['config.xml'], dest: '<%= yeoman.dist %>', filter: 'isFile'}
+                ]
             }
         },
         bower: {

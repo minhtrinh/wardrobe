@@ -20,10 +20,12 @@ require.config({
     paths: {
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone/backbone',
-        json: '../bower_components/requirejs-plugins/src/json',
+        // json: '../bower_components/requirejs-plugins/src/json',
         underscore: '../bower_components/underscore/underscore',
         mustache: '../bower_components/mustache/mustache',
         localStorage: '../bower_components/Backbone.localStorage/backbone.localStorage-min',
+        hammerjs: '../bower_components/hammerjs/hammer',
+        jqHammer: '../bower_components/jquery-hammerjs/jquery.hammer',
 
         // Services
         camera: '../scripts/services/camera',
@@ -61,7 +63,7 @@ require([
     Backbone.history.start();
 
     //= require foundation
-    $(document).foundation({
+    $('body').foundation({
         orbit: {
             timer: false
         }

@@ -3,14 +3,14 @@
 define([
     'underscore',
     'backbone',
-    'models/category',
+    'models/images',
     'localStorage'
-], function (_, Backbone, CategoryModel) {
+], function (_, Backbone, ImagesModel) {
     'use strict';
 
-    var CategoriesCollection = Backbone.Collection.extend({
-        model: CategoryModel,
-        localStorage: new Backbone.LocalStorage('categories'),
+    var ImagesCollection = Backbone.Collection.extend({
+        model: ImagesModel,
+        localStorage: new Backbone.LocalStorage('images'),
         removeModelById: function(id) {
             this.get(id).destroy();
         },
@@ -24,5 +24,5 @@ define([
         }
     });
 
-    return CategoriesCollection;
+    return ImagesCollection;
 });
