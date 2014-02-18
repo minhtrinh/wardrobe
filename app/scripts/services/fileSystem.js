@@ -6,9 +6,12 @@ define('fileSystem', [
     'use strict';
 
     var fileSystem,
+        appDirectory,
+        utils = {
 
-        onFail = function(error) {
-            $logging.d('fileSystem fail: ' + error);
+            onFail: function(msg) {
+                $logging.d('fileSystem fail: ' + msg);
+            }
         };
     /**
      * Public APIs
@@ -21,11 +24,17 @@ define('fileSystem', [
             if (!_.isUndefined(requestFileSystem) && !_.isUndefined(LocalFileSystem)) {
                 requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs) {
                     fileSystem = fs;
-                }, onFail);
+
+                    // create new folder names "Wardrobe" if not exists
+                    fileSystem.root.getDirectory('Wardrobe', {create: true, exclusive: false},
+                    function(appDir) {
+                        appDirectory = appDir;
+                    }, utils.onFail);
+                }, utils.onFail);
             }
         },
 
-        getImagesInDir: function(dir, onSuccess, onError) {
+        getImagesInDir: function(dir, onSuccess) {
             var paths = [];
 
             // NOTE: Test
@@ -45,16 +54,32 @@ define('fileSystem', [
 
                         // Callback on success
                         onSuccess(paths);
-                    }, onFail);
-                }, onFail);
+                    }, utils.onFail);
+                }, utils.onFail);
             } else {
-
-                // Add mock picture
-                paths.push('../images/munte.jpg');
-                paths.push('../images/munte.jpg');
-                onSuccess(paths);
+                utils.onFail('Cordova Filesystem wasn\'t loaded');
             }
             // End Test
+        },
+
+        saveImage: function(data) {
+            if (!_.isUndefined(resolveLocalFileSystemURI)
+                && !_.isUndefined(fileSystem)
+                && !_.isUndefined(appDirectory)) {
+
+                resolveLocalFileSystemURI(data.imageData,
+                    // callback function when the file system uri has been resolved
+                    function(entry) {
+                        var d = new Date();
+                        var n = d.getTime();
+
+                        // new file name
+                        var newFileName = data.category + n + '.jpg';
+
+                        entry.moveTo()
+                    },
+                    onFail);
+            }
         }
     };
 });

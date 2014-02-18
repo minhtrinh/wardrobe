@@ -1,9 +1,14 @@
 <ul class="clearing-thumbs" data-clearing>
     {{#.}}
     <li>
-        <a class="th" href="{{.}}">
-            <img class="image-thumbnails" src="{{.}}">
+        <a class="th" href="{{path}}">
+            <img class="image-thumbnails" id="{{id}}" src="{{path}}">
         </a>
     </li>
     {{/.}}
+    <li>
+        <a class="th">
+            <img class="new-image" src="http://placehold.it/150x150" >
+        </a>
+    </li>
 </ul>

@@ -3,7 +3,7 @@
 define([
     'underscore',
     'backbone',
-    'models/images',
+    'models/image',
     'localStorage'
 ], function (_, Backbone, ImagesModel) {
     'use strict';

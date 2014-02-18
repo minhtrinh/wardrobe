@@ -3,10 +3,11 @@
 define([
     'jquery',
     'backbone',
+    'data',
     'views/main',
     'views/topbar',
     'views/imagesGallery'
-], function ($, Backbone, MainView, Topbar, ImagesGallery) {
+], function ($, Backbone, $data, MainView, Topbar, ImagesGallery) {
     'use strict';
 
     var MainRouter = Backbone.Router.extend({
@@ -29,8 +30,10 @@ define([
             var topbar = new Topbar();
             $('.appBar').html(topbar.render().el);
 
-            // Render images gallery of a category
-            var imagesGallery = new ImagesGallery();
+            // Render images gallery of a category with images data
+            var images = $data.getImagesByCategory(id);
+
+            var imagesGallery = new ImagesGallery({collection: images});
             $('.appContent').html(imagesGallery.render().el);
         }
 

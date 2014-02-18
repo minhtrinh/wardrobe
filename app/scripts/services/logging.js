@@ -25,6 +25,10 @@ define('logging', [
             if (DEVELOPMENT) {
                 console.log('[VERBOSE]   ' + JSON.stringify(msg));
             }
+        },
+        // error
+        e: function(msg) {
+            console.log('[ERROR]   ' + JSON.stringify(msg));
         }
     };
 });

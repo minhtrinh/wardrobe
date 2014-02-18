@@ -21,11 +21,12 @@ define('camera', [
                 // Take picture using device camera and retrieve image as base64-encoded string
                 navigator.camera.getPicture(onSuccess, onFail, {
                     quality : 50,
-                    destinationType : destinationType.DATA_URL
+                    destinationType : navigator.camera.DestinationType.DATA_URL
                 });
             } else {
                 onFail('Cordova Camera wasn\'t loaded');
             }
         }
+
     };
 });
