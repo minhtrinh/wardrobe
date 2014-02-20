@@ -13,8 +13,12 @@
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
+
+        <!-- This is the Weinre script -->
+        <script src="http://192.168.1.101:8080/target/target-script-min.js#anonymous"></script>
 
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
@@ -22,7 +26,7 @@
 
         <!-- cordova include for development; replaced by cordova build with platform dependant script. -->
         <!-- build:js cordova.js -->
-        <script src="../bower_components/jquery/jquery.min.js"></script>
+        <script src="bower_components/jquery/jquery.min.js"></script>
         <script src="cordova.js"></script>
         <!-- endbuild -->
     </head>
@@ -35,18 +39,15 @@
             <!-- Modal View -->
             <div id="notification" class="reveal-modal" data-reveal></div>
 
-            <!-- Top Bar -->
-            <div class="appBar fixed"></div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <!-- Top Bar -->
+                    <div class="appBar fixed"></div>
+                </div>
+            </div>
 
             <!-- Main Content -->
             <div class="appContent"></div>
-
-            <!-- footer -->
-            <div class="footer">
-                <p>
-                    Leminhtrinh.de
-                </p>
-            </div>
         </div>
 
         <!-- build:js scripts/main.js -->

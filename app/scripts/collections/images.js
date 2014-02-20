@@ -18,7 +18,11 @@ define([
             if (!_.isNull(data.id) && !_.isUndefined(this.get(data.id))) {
                 this.get(data.id).save(data);
             } else {
-                data.id = (parseInt(this.last().get('id')) + 1).toString();
+                if (this.length > 0) {
+                    data.id = (parseInt(this.last().get('id')) + 1).toString();
+                } else {
+                    data.id = '1';
+                }
                 this.create(data);
             }
         }

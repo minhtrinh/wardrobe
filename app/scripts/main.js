@@ -26,12 +26,15 @@ require.config({
         localStorage: '../bower_components/Backbone.localStorage/backbone.localStorage-min',
         hammerjs: '../bower_components/hammerjs/hammer',
         jqHammer: '../bower_components/jquery-hammerjs/jquery.hammer',
+        fastclick: '../bower_components/fastclick/lib/fastclick',
 
         // Services
         camera: '../scripts/services/camera',
         data: '../scripts/services/data',
         logging: '../scripts/services/logging',
         fileSystem: '../scripts/services/fileSystem',
+        state: '../scripts/services/state',
+        notification: '../scripts/services/notification',
 
         // Foundation
         foundation: '../bower_components/foundation/js/foundation'
@@ -42,11 +45,12 @@ require([
     'jquery',
     'underscore',
     'backbone',
+    'fastclick',
     'routes/main',
     'data',
     'fileSystem',
     'foundation'
-], function ($, _, Backbone, Router, $data, $fileSystem) {
+], function ($, _, Backbone, fastclick, Router, $data, $fileSystem) {
 
     // Killing zombie views by transition
     Backbone.View.prototype.close = function(){
@@ -61,6 +65,9 @@ require([
 
     new Router();
     Backbone.history.start();
+
+    // Fastclick
+    new FastClick($('body')[0]);
 
     //= require foundation
     $('body').foundation({

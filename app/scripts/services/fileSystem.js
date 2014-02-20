@@ -10,7 +10,53 @@ define('fileSystem', [
         utils = {
 
             onFail: function(msg) {
-                $logging.d('fileSystem fail: ' + msg);
+                var err = '';
+                if (_.isUndefined(FileError)) {
+                    err = 'Cordova failed';
+                } else {
+                    switch(msg.code) {
+                        case FileError.NOT_FOUND_ERR:
+                        err = 'not found';
+                        break;
+                        case FileError.SECURITY_ERR:
+                        err = 'security';
+                        break;
+                        case FileError.ABORT_ERR:
+                        err = 'abort';
+                        break;
+                        case FileError.NOT_READABLE_ERR:
+                        err = 'not readable';
+                        break;
+                        case FileError.ENCODING_ERR:
+                        err = 'encoding';
+                        break;
+                        case FileError.NO_MODIFICATION_ALLOWED_ERR:
+                        err = 'no modification allowed';
+                        break;
+                        case FileError.INVALID_STATE_ERR:
+                        err = 'invalid state';
+                        break;
+                        case FileError.SYNTAX_ERR:
+                        err = 'syntax';
+                        break;
+                        case FileError.INVALID_MODIFICATION_ERR:
+                        err = 'invalid modification';
+                        break;
+                        case FileError.QUOTA_EXCEEDED_ERR:
+                        err = 'quote exceed';
+                        break;
+                        case FileError.TYPE_MISMATCH_ERR:
+                        err = 'type mismatch';
+                        break;
+                        case FileError.PATH_EXISTS_ERR:
+                        err = 'path exists';
+                        break;
+                        default:
+                        err = 'unknow';
+                        break;
+                    }
+                }
+                $logging.d('FileSystem fail, because: ' + err);
             }
         };
     /**
@@ -62,6 +108,17 @@ define('fileSystem', [
             // End Test
         },
 
+        /**
+         * persists the image in device, fires callback with the new image's path
+         * @param {Object} data: contains category-id, image's data (64bit-info),
+         *          callback function with file's path as parameter
+         *          For example: data = { imageData: <image-data>,
+         *                                categoryId: <category-id>,
+         *                                callback: function(path) {
+         *                                    <call-back>
+         *                                }
+         *                              }
+         */
         saveImage: function(data) {
             if (!_.isUndefined(resolveLocalFileSystemURI)
                 && !_.isUndefined(fileSystem)
@@ -70,15 +127,22 @@ define('fileSystem', [
                 resolveLocalFileSystemURI(data.imageData,
                     // callback function when the file system uri has been resolved
                     function(entry) {
+
                         var d = new Date();
                         var n = d.getTime();
 
                         // new file name
-                        var newFileName = data.category + n + '.jpg';
+                        var newFileName = data.categoryId + '_' + n + '.jpg';
 
-                        entry.moveTo()
+                        entry.moveTo(appDirectory, newFileName,
+                            function(entry) {
+                                data.callback(entry.fullPath);
+                            },
+                            utils.onFail
+                        );
                     },
-                    onFail);
+                    utils.onFail
+                );
             }
         }
     };

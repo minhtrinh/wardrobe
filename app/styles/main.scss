@@ -5,13 +5,8 @@
 
 /* Space out content a bit */
 body {
-    padding-top: 0px;
+    padding-top: 10px;
     padding-bottom: 0px;
-}
-
-.footer {
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 .appContent {
@@ -24,3 +19,4 @@ body {
 @import "pages/mainPage";
 @import "pages/imagesGallery";
 @import "plugins/notification";
+@import "plugins/topbar";
