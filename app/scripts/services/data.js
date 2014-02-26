@@ -70,6 +70,8 @@ define('data', [
          * @param {Function} callback with parameter: Images-Collection
          */
         getImagesByCategory: function(id, callback) {
+            $logging.d('Data: getImagesByCategory: ' + id);
+
             images.fetch({
                 success: function() {
                     var list = images.where({category: id});

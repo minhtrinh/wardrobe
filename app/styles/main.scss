@@ -9,15 +9,24 @@ body {
     padding-bottom: 0px;
 }
 
+.container {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
 .appContent {
     position: absolute;
-    top: 5rem;
+    top: 3.5rem;
     bottom: 0px;
     width: 100%;
 }
 
 .appBar {
     top: 0px;
+    height: 3rem;
 }
 
 @import "pages/mainPage";

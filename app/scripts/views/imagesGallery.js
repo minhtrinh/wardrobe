@@ -44,9 +44,6 @@ define([
 
         render: function() {
 
-            // TODO: TEST - need remove
-            $fileSystem.getAllImages();
-
             this.$el.html(mustache.render(this.template, this.collection.toJSON()));
             return this;
         },
@@ -153,6 +150,8 @@ define([
             case 2: // From photo library
                 $camera.getFromLibrary(
                     function(result) {
+                        console.log(result);
+
                         var imageFileData = {
                             imageData: result,
                             categoryId: $state.getCurrentCategoryId(),

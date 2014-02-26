@@ -19,7 +19,8 @@ define([
 
         initialize: function() {
             _.bindAll(this, 'render', 'onConfirm', 'removeCategory',
-                'editCategory', 'closeEditMode');
+                'editCategory', 'closeEditMode', 'onTapAddCategory',
+                'onEditCaption', 'onHoldCategory');
 
             this.listenTo(this.collection, 'add', this.render);
             this.listenTo(this.collection, 'remove', this.render);
@@ -30,45 +31,70 @@ define([
 
         events: {
 
+            // Press on category
+            'tap a.th': 'onTapCategory',
+
             // Press on "Add new category" button
-            'tap .add-category': function(event) {
-                this.$('.edit-caption#new').show();
-                this.$('.edit-caption#new').focus();
-            },
+            'tap .add-category': 'onTapAddCategory',
 
             // Handling for edit category's caption
-            'keypress .edit-caption': function(event) {
-                var id = event.target.id;
-                var thisView = this;
-
-                // Finish after click on Enter
-                if (event.keyCode === 13) {
-                    var value = event.target.value;
-                    $(event.target).hide();
-                    if (value) {
-                        thisView.collection.createOrUpdateModel({
-                            id: id ? id : null,
-                            name: value
-                        });
-                    }
-                }
-            },
+            'keypress .edit-caption': 'onEditCaption',
 
             // Handling when user press and hold on a category
-            'hold .category-thumbnails': function(event) {
-                var id = event.target.id;
-                this.selectedCategory = id;
-
-                $notification.confirm(
-                    this.collection.get(id).get('name'),
-                    this.onConfirm,
-                    'Kategorie bearbeiten',
-                    ['Löschen','Bearbeiten','Abbrechen']
-                );
-            },
+            'hold .category-thumbnails': 'onHoldCategory',
 
             // Edit caption losts focus
             'blur .edit-caption': 'closeEditMode'
+        },
+
+        onTapCategory: function(event) {
+            var id = event.target.id;
+
+            $logging.d('categoriesSlide: Tap on category: ' + id);
+
+            Backbone.history.navigate('gallery/' + id, {trigger: true});
+        },
+
+        onTapAddCategory: function(event) {
+            $logging.d('categoriesSlide: Tap on Add new category: ' + id);
+
+            this.$('.edit-caption#new').show();
+            this.$('.edit-caption#new').focus();
+        },
+
+        onEditCaption: function(event) {
+            var id = event.target.id;
+
+            $logging.d('categoriesSlide: Edit caption: ' + id);
+
+            var thisView = this;
+
+            // Finish after click on Enter
+            if (event.keyCode === 13) {
+                var value = event.target.value;
+                $(event.target).hide();
+                if (value) {
+                    thisView.collection.createOrUpdateModel({
+                        id: id ? id : null,
+                        name: value
+                    });
+                }
+            }
+        },
+
+        onHoldCategory: function(event) {
+            var id = event.target.id;
+
+            $logging.d('categoriesSlide: Hold on category: ' + id);
+
+            this.selectedCategory = id;
+
+            $notification.confirm(
+                this.collection.get(id).get('name'),
+                this.onConfirm,
+                'Kategorie bearbeiten',
+                ['Löschen','Bearbeiten','Abbrechen']
+            );
         },
 
         render: function() {
