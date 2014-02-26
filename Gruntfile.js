@@ -225,6 +225,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
+                        '<%= yeoman.app %>/bower_components/foundation-icons/foundation_icons_general/stylesheets/general_foundicons.css',
                         '.tmp/styles/{,*/}*.css',
                         '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]
@@ -267,6 +268,7 @@ module.exports = function (grunt) {
                         'bower_components/sass-bootstrap/fonts/*.*'
                     ]
                 },
+                {expand: true, flatten: true, src: ['<%= yeoman.app %>/bower_components/foundation-icons/foundation_icons_general/fonts/*'], dest: '<%= yeoman.dist %>/fonts', filter: 'isFile'},
                 {expand: true, flatten: true, src: ['config.xml'], dest: '<%= yeoman.dist %>', filter: 'isFile'}
                 ]
             }

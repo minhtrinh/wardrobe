@@ -1,8 +1,15 @@
 <ul class="categories-slide small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+    <li>
+        <a href="#newest" class="th">
+            <img class="newest category" src="http://placehold.it/120x120" >
+        </a>
+        <p class="category-caption">Neuheiten</p>
+    </li>
+
     {{#.}}
     <li>
         <a href="#gallery/{{id}}" class="th" id="{{id}}">
-            <img class="category-thumbnails" src="{{image}}" id="{{id}}">
+            <img class="category-thumbnails category" src="{{image}}" id="{{id}}">
         </a>
         <p class="category-caption" id="{{id}}">{{name}}</p>
         <div>
@@ -11,9 +18,10 @@
         
     </li>
     {{/.}}
+
     <li>
         <a class="th">
-            <img class="new-category" src="http://placehold.it/150x150" >
+            <img class="add-category category" src="http://placehold.it/120x120" >
         </a>
         <p class="category-caption" id="new" style="display:none;"></p>
         <div>

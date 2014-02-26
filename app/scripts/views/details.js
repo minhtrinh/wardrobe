@@ -12,7 +12,8 @@ define([
     var DetailsView = Backbone.View.extend({
         template: JST['details-template'],
         render: function() {
-            this.$el.html(mustache.render(this.template));
+            console.log('render details', this.model);
+            this.$el.html(mustache.render(this.template, this.model.toJSON()));
             return this;
         }
     });

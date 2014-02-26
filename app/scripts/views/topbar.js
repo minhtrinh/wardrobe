@@ -14,24 +14,21 @@ define([
     'use strict';
 
     var TopbarView = Backbone.View.extend({
+        className: 'fixed',
         template: JST['topbar-template'],
-        initialize: function() {
-            console.log($state.getCurrentPage());
-            if ($state.getCurrentPage() !== 'index') {
-                this.$('a.nav-left-button').show();
-            } else {
-                this.$('a.nav-left-button').hide();
-            }
+        initialize: function(data) {
+            this.data = data;
+            this.$el.hammer();
         },
         events: {
-            'click .nav-left-button': function() {
+            'tap .nav-left-button': function() {
                 $logging.d('click on Back button');
                 window.history.back();
             }
         },
 
         render: function() {
-            this.$el.html(mustache.render(this.template));
+            this.$el.html(mustache.render(this.template, this.data));
             return this;
         }
     });

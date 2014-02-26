@@ -5,7 +5,7 @@
 
 /* Space out content a bit */
 body {
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 0px;
 }
 
@@ -16,7 +16,13 @@ body {
     width: 100%;
 }
 
+.appBar {
+    top: 0px;
+}
+
 @import "pages/mainPage";
 @import "pages/imagesGallery";
-@import "plugins/notification";
-@import "plugins/topbar";
+@import "pages/details";
+@import "components/notification";
+@import "components/topbar";
+

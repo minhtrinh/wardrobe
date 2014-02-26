@@ -80,20 +80,22 @@ define('fileSystem', [
             }
         },
 
-        getImagesInDir: function(dir, onSuccess) {
+        getAllImages: function(onSuccess) {
             var paths = [];
 
             // NOTE: Test
             if (!_.isUndefined(fileSystem)) {
-                fileSystem.root.getDirectory('Download', {create: false},
+                fileSystem.root.getDirectory('Wardrobe', {create: false},
                 function(imgDir) {
                     var reader = imgDir.createReader();
                     reader.readEntries(function(entries) {
 
+                        $logging.d('fileSystem: getAllImages: Size ' + entries.length);
+
                         // Find all jpg images in directory, add paths to list
                         _.each(entries, function(entry) {
                             if (entry.name.indexOf(".jpg") != -1) {
-                                $logging.d(entry.fullPath);
+
                                 paths.push(entry.fullPath);
                             }
                         });
@@ -132,7 +134,7 @@ define('fileSystem', [
                         var n = d.getTime();
 
                         // new file name
-                        var newFileName = data.categoryId + '_' + n + '.jpg';
+                        var newFileName = n + '.jpg';
 
                         entry.moveTo(appDirectory, newFileName,
                             function(entry) {
@@ -144,6 +146,25 @@ define('fileSystem', [
                     utils.onFail
                 );
             }
+        },
+        remove: function(path, callback) {
+            if (!_.isUndefined(resolveLocalFileSystemURI)
+                && !_.isUndefined(fileSystem)) {
+
+                resolveLocalFileSystemURI('file://' + path,
+
+                    // callback function when the file system uri has been resolved
+                    function(entry) {
+                        entry.remove(function(e) {
+                            $logging.d('fileSystem: Removed ' + JSON.stringify(e));
+                            callback(e.fullPath);
+                        },
+                        utils.onFail);
+                    },
+                    utils.onFail
+                );
+            }
+
         }
     };
 });

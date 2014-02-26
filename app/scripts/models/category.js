@@ -8,6 +8,7 @@ define([
 
     var CategoryModel = Backbone.Model.extend({
         defaults: {
+            image: 'images/munte.jpg'
         }
     });
 
