@@ -22,7 +22,7 @@ define([
         },
         events: {
             'tap .nav-left-button': function() {
-                $logging.d('click on Back button');
+                $logging.d('Topbar: Go back');
                 window.history.back();
             }
         },

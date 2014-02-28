@@ -8,6 +8,7 @@ define([
 
     var ImageModel = Backbone.Model.extend({
         defaults: {
+            relate: []
         },
         setImage: function(path) {
             this.set('image', path);

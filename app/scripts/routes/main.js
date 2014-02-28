@@ -35,6 +35,7 @@ define([
             // Render top bar
             var topbar = new Topbar({
                 hasBackButton: false,
+                hasRightButton: false,
                 title: 'Wardrobe'
             });
             $('.appBar').html(topbar.render().el);
@@ -53,6 +54,7 @@ define([
             // Render top bar
             var topbar = new Topbar({
                 hasBackButton: true,
+                hasRightButton: false,
                 title: $state.getCurrentCategoryName()
             });
             $('.appBar').html(topbar.render().el);
@@ -74,6 +76,7 @@ define([
             // Render top bar
             var topbar = new Topbar({
                 hasBackButton: true,
+                hasRightButton: false,
                 title: 'Neuheiten'
             });
             $('.appBar').html(topbar.render().el);
@@ -96,6 +99,7 @@ define([
             // Render top bar
             var topbar = new Topbar({
                 hasBackButton: true,
+                hasRightButton: true,
                 title: $state.getCurrentCategoryName()
             });
             $('.appBar').html(topbar.render().el);

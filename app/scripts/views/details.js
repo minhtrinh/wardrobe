@@ -15,14 +15,14 @@ define([
     var DetailsView = Backbone.View.extend({
         template: JST['details-template'],
         render: function() {
-            this.$el.html(mustache.render(this.template));
+            // TODO: TEST
+            if (!_.isUndefined(this.model)) {
+                this.$el.html(mustache.render(this.template, this.model.toJSON()));
+            } else {
+                this.$el.html(mustache.render(this.template));
+            }
 
-            var thisView = this;
-
-            // $fileSystem.getAllImages(function(images) {
-                // thisView.$el.find('ul.inline-list').append('<li><a class="th"><img src="' + images + '"></a></li>');
-            // });
-            return thisView;
+            return this;
         }
     });
 

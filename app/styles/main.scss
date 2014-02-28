@@ -15,18 +15,20 @@ body {
     bottom: 0px;
     left: 0px;
     right: 0px;
+    overflow: scroll;
 }
 
 .appContent {
     position: absolute;
-    top: 3.5rem;
+    top: 4rem;
     bottom: 0px;
     width: 100%;
 }
 
 .appBar {
+    position: absolute;
     top: 0px;
-    height: 3rem;
+    height: 3.5rem;
 }
 
 @import "pages/mainPage";

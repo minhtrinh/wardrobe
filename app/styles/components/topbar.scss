@@ -1,20 +1,29 @@
+$appBar-height: 3.5rem;
+
 nav.top-bar {
-    text-align:center;
+    text-align: center;
+    height: $appBar-height;
 }
 
-.nav-left-button {
+a.button.nav-left-button {
+    text-align: center;
     position: absolute;
     height: 100%;
     width: 50px;
     background-color: transparent;
+    font-size: 30px;
     left: 0px;
 }
 
-.foundation-left-arrow {
+a.button.nav-right-button {
+    position: absolute;
+    height: 100%;
+    width: 50px;
+    background-color: transparent;
     font-size: 30px;
+    right: 0px;
 }
 
 .app-name {
-    bottom: 5px;
     color:white;
 }
