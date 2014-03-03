@@ -16,9 +16,24 @@ require.config({
         foundation: {
             deps: ['jquery']
         },
-        mobiscroll: {
+        mobiscroll_core: {
             deps: ['jquery'],
             exports: 'mobiscroll'
+        },
+        mobiscroll_scroller: {
+            deps: ['jquery']
+        },
+        mobiscroll_datetime: {
+            deps: ['jquery']
+        },
+        mobiscroll_select: {
+            deps: ['jquery']
+        },
+        mobiscroll_scroller_ios7: {
+            deps: ['jquery']
+        },
+        mobiscroll_scroller_ios: {
+            deps: ['jquery']
         }
     },
     paths: {
@@ -31,7 +46,17 @@ require.config({
         hammerjs: '../bower_components/hammerjs/hammer',
         jqHammer: '../bower_components/jquery-hammerjs/jquery.hammer',
         fastclick: '../bower_components/fastclick/lib/fastclick',
-        mobiscroll: '../bower_components/mobiscroll/js/mobiscroll.core',
+        mobiscroll_core: '../bower_components/mobiscroll/js/mobiscroll.core',
+        mobiscroll_scroller: '../bower_components/mobiscroll/js/mobiscroll.scroller',
+        mobiscroll_datetime: '../bower_components/mobiscroll/js/mobiscroll.datetime',
+        mobiscroll_select: '../bower_components/mobiscroll/js/mobiscroll.select',
+        mobiscroll_list: '../bower_components/mobiscroll/js/mobiscroll.list',
+        mobiscroll_scroller_android: '../bower_components/mobiscroll/js/mobiscroll.scroller.android',
+        mobiscroll_scroller_android_ics: '../bower_components/mobiscroll/js/mobiscroll.scroller.android-ics',
+        mobiscroll_scroller_ios: '../bower_components/mobiscroll/js/mobiscroll.scroller.ios',
+        mobiscroll_scroller_ios7: '../bower_components/mobiscroll/js/mobiscroll.scroller.ios7',
+        mobiscroll_scroller_wp: '../bower_components/mobiscroll/js/mobiscroll.scroller.wp',
+        mobiscroll_scroller_jqm: '../bower_components/mobiscroll/js/mobiscroll.scroller.jqm',
 
         // Services
         camera: '../scripts/services/camera',
@@ -54,7 +79,15 @@ require([
     'routes/main',
     'data',
     'fileSystem',
-    'foundation'
+    'foundation',
+    'mobiscroll_core',
+    'mobiscroll_scroller',
+    'mobiscroll_datetime',
+    'mobiscroll_select',
+    // 'mobiscroll_scroller_android',
+    // 'mobiscroll_scroller_android_ics',
+    'mobiscroll_scroller_ios',
+    'mobiscroll_scroller_ios7',
 ], function ($, _, Backbone, fastclick, Router, $data, $fileSystem) {
 
     // Killing zombie views by transition

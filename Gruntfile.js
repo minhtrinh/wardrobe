@@ -227,6 +227,11 @@ module.exports = function (grunt) {
                     '<%= yeoman.dist %>/styles/main.css': [
                         '<%= yeoman.app %>/bower_components/foundation-icons/foundation_icons_general/stylesheets/general_foundicons.css',
                         '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.css',
+                        '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.ios.css',
+                        '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.android.css',
+                        '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.android-ics.css',
+                        '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.wp.css',
+                        '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.jqm.css',
                         '.tmp/styles/{,*/}*.css',
                         '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]

@@ -10,8 +10,7 @@ define([
     'data',
     'fileSystem',
     'hammerjs',
-    'jqHammer',
-    'mobiscroll'
+    'jqHammer'
 ], function ($, _, Backbone, JST, mustache, $logging, $data, $fileSystem) {
     'use strict';
 
@@ -39,21 +38,14 @@ define([
                 this.$el.html(mustache.render(this.template));
             }
 
-            console.log(this.$('#scroller').mobiscroll({ preset: 'date' }));
+            this.$('#demo').mobiscroll().select({
+                theme: 'ios7',
+                display: 'bottom',
+                mode: 'scroller',
+                minWidth: 200
+            });
 
-            // this.$('#scroller').mobiscroll().date({
-                // theme: 'ios7',
-                // display: 'bottom',
-                // mode: 'scroller'
-            // });
-            // $('#show').click(function(){
-                // $('#demo').mobiscroll('show');
-                // return false;
-            // });
-            // $('#clear').click(function () {
-                // $('#demo').val('');
-                // return false;
-            // });
+            $('#scroller').mobiscroll('show');
 
             return this;
         },
