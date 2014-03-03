@@ -6,6 +6,13 @@
     // overflow-x: hidden;
 }
 
+#image-container {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
 img .image-full {
     max-height: 100%;
 }
@@ -34,8 +41,11 @@ img .image-full {
     margin-top: 40px;
 }
 
-ul > li {
-    bottom: 0px;
+a.button#edit-button {
+    position: absolute;
+    font-size: 20px;
+    top: 10px;
+    right: 10px;
 }
 
 .th > img {

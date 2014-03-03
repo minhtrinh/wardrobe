@@ -226,6 +226,7 @@ module.exports = function (grunt) {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
                         '<%= yeoman.app %>/bower_components/foundation-icons/foundation_icons_general/stylesheets/general_foundicons.css',
+                        '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.css',
                         '.tmp/styles/{,*/}*.css',
                         '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]

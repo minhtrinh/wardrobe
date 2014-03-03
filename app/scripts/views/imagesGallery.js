@@ -59,7 +59,7 @@ define([
             $notification.confirm(
                 '',
                 this.onConfirmEditImage,
-                'Foto bearbeiten',
+                'Foto',
                 ['Löschen','Bearbeiten','Abbrechen']
             );
         },

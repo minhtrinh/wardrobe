@@ -32,7 +32,10 @@ define([
         events: {
 
             // Press on category
-            'tap a.th': 'onTapCategory',
+            'tap .category-thumbnails': 'onTapCategory',
+
+            // Press on newest
+            'tap .newest': 'onTapNewest',
 
             // Press on "Add new category" button
             'tap .add-category': 'onTapAddCategory',
@@ -55,8 +58,14 @@ define([
             Backbone.history.navigate('gallery/' + id, {trigger: true});
         },
 
+        onTapNewest: function(event) {
+            $logging.d('categoriesSlide: Tap on newest');
+
+            Backbone.history.navigate('newest', {trigger: true});
+        },
+
         onTapAddCategory: function(event) {
-            $logging.d('categoriesSlide: Tap on Add new category: ' + id);
+            $logging.d('categoriesSlide: Tap on Add new category.');
 
             this.$('.edit-caption#new').show();
             this.$('.edit-caption#new').focus();

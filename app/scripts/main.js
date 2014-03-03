@@ -15,6 +15,10 @@ require.config({
         },
         foundation: {
             deps: ['jquery']
+        },
+        mobiscroll: {
+            deps: ['jquery'],
+            exports: 'mobiscroll'
         }
     },
     paths: {
@@ -27,6 +31,7 @@ require.config({
         hammerjs: '../bower_components/hammerjs/hammer',
         jqHammer: '../bower_components/jquery-hammerjs/jquery.hammer',
         fastclick: '../bower_components/fastclick/lib/fastclick',
+        mobiscroll: '../bower_components/mobiscroll/js/mobiscroll.core',
 
         // Services
         camera: '../scripts/services/camera',
