@@ -8,9 +8,10 @@ define([
     'state',
     'templates',
     'mustache',
+    'eventBus',
     'hammerjs',
     'jqHammer'
-], function ($, _, Backbone, $logging, $state, JST, mustache) {
+], function ($, _, Backbone, $logging, $state, JST, mustache, $eventBus) {
     'use strict';
 
     var TopbarView = Backbone.View.extend({
@@ -24,6 +25,12 @@ define([
             'tap .nav-left-button': function() {
                 $logging.d('Topbar: Go back');
                 window.history.back();
+            },
+            'tap .nav-right-button': function() {
+                this.$('#finish-label').toggle();
+                this.$('#edit-icon').toggle();
+
+                $eventBus.trigger('topbar_right_button_clicked');
             }
         },
 

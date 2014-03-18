@@ -20,7 +20,7 @@ body {
 
 .appContent {
     position: absolute;
-    top: 4rem;
+    top: 3.5rem;
     bottom: 0px;
     width: 100%;
 }
@@ -31,9 +31,14 @@ body {
     height: 3.5rem;
 }
 
+.img-highlight {
+    border-color: blue;
+}
+
 @import "pages/mainPage";
 @import "pages/imagesGallery";
 @import "pages/details";
 @import "components/notification";
 @import "components/topbar";
+@import "components/imagesList";
 

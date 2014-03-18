@@ -1,4 +1,12 @@
-{{#.}}
-<li><a class="th relating-item" id="{{id}}"><img src="{{path}}"></a></li>
-{{/.}}
-<li><a class="th" id="add-suitable-button"><img src="http://placehold.it/120x120"></a></li>
+<ul>
+    {{#.}}
+    <li>
+        <a class="relating-item" id="{{id}}">
+            <img src="{{path}}">
+        </a>
+    </li>
+    {{/.}}
+    <li><a id="add-relation-button">
+        <img src="http://placehold.it/120x120">
+    </a></li>
+</ul>

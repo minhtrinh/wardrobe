@@ -19,7 +19,7 @@ define([
                 this.get(data.id).save(data);
             } else {
                 if (this.length > 0) {
-                    data.id = (parseInt(this.last().get('id')) + 1).toString();
+                    data.id = (parseInt(this.last().get('id'), 10) + 1).toString();
                 } else {
                     data.id = '1';
                 }

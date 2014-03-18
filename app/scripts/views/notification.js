@@ -6,9 +6,7 @@ define([
     'backbone',
     'templates',
     'mustache',
-    'logging',
-    'hammerjs',
-    'jqHammer'
+    'logging'
 ], function ($, _, Backbone, JST, mustache, $logging) {
     'use strict';
 

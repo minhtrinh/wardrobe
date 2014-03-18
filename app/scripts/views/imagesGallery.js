@@ -11,9 +11,7 @@ define([
     'camera',
     'data',
     'state',
-    'notification',
-    'hammerjs',
-    'jqHammer'
+    'notification'
 ], function ($, _, Backbone, JST, mustache, $logging, $fileSystem, $camera, $data, $state, $notification) {
     'use strict';
 
@@ -21,16 +19,16 @@ define([
         template: JST['imagesGallery-template'],
 
         initialize: function() {
-            _.bindAll(this, 'render', 'loadData', 'removeImage',
+            _.bindAll(this, 'render', 'loadData', 'removeImage', 'updateCategoryThumbs',
                 'onConfirmNewImage', 'onConfirmEditImage', 'createNewImage',
                 'removeEvents', 'onTapAddImage', 'onImageHold');
 
             this.listenTo(this.collection, 'remove', this.render);
             this.listenTo(this.collection, 'add', this.render);
             this.listenTo(this.collection, 'change', this.render);
-            this.$el.hammer();
 
             this.selectedImage = null;
+            this.categoryId = $state.getCurrentCategoryId();
         },
 
         events: {
@@ -48,6 +46,10 @@ define([
             return this;
         },
 
+        /**
+         * Callback for Event: Hold on an image
+         * @param {Object} event
+         */
         onImageHold: function(event) {
             var id = event.target.id;
 
@@ -64,9 +66,13 @@ define([
             );
         },
 
+        /**
+         * Callback for Event: Tap on button "Add new image"
+         *
+         * @param {Object} event
+         */
         onTapAddImage: function(event) {
             $logging.d('imagesGallery: Tap on add image');
-            // var thisView = this;
 
             $notification.confirm(
                 'Quelle auswählen',
@@ -84,9 +90,7 @@ define([
 
             var thisView = this;
 
-            var currentCategoryId = $state.getCurrentCategoryId();
-
-            $data.getImagesByCategory(currentCategoryId, function(images) {
+            $data.getImagesByCategory(thisView.categoryId, function(images) {
                 thisView.collection = images;
                 thisView.render();
             });
@@ -98,12 +102,10 @@ define([
 
             var thisView = this;
 
-            $fileSystem.remove($data.getImageItems().get(id).get('path'),
-                function() {
-                    $data.getImageItems().removeModelById(id);
-                    thisView.loadData();
-                }
-            );
+            $data.removeImage(id, function() {
+                thisView.loadData();
+                thisView.updateCategoryThumbs();
+            });
 
             // this.notification.hide();
         },
@@ -136,7 +138,7 @@ define([
                     function(result) {
                         var imageFileData = {
                             imageData: result,
-                            categoryId: $state.getCurrentCategoryId(),
+                            categoryId: thisView.categoryId,
 
                             // create new object for captured photo
                             callback: thisView.createNewImage
@@ -154,7 +156,7 @@ define([
 
                         var imageFileData = {
                             imageData: result,
-                            categoryId: $state.getCurrentCategoryId(),
+                            categoryId: thisView.categoryId,
 
                             // create new object for selected photo
                             callback: thisView.createNewImage
@@ -168,7 +170,10 @@ define([
             default: // Cancel
                 break;
             }
+
+
         },
+
         createNewImage: function(imgPath) {
             $logging.d('imagesGallery: Create new image: ' + imgPath);
 
@@ -179,15 +184,16 @@ define([
                 time: (new Date()).getTime()
             });
 
-            $data.getCategoryItems().createOrUpdateModel({
-                id: $state.getCurrentCategoryId(),
-                image: imgPath,
-                name: $state.getCurrentCategoryName()
-            });
+            this.updateCategoryThumbs();
 
             // Update this view
             this.loadData();
         },
+
+        updateCategoryThumbs: function() {
+            $data.updateCategoryThumbnail(this.categoryId);
+        },
+
         removeEvents: function() {
             $logging.d('imagesGallery: Remove binded events');
             this.$el.find('.image-thumbnails').off('hold', this.onImageHold);

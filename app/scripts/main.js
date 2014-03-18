@@ -64,7 +64,9 @@ require.config({
         logging: '../scripts/services/logging',
         fileSystem: '../scripts/services/fileSystem',
         state: '../scripts/services/state',
+        appView: '../scripts/services/appView',
         notification: '../scripts/services/notification',
+        eventBus: '../scripts/services/eventBus',
 
         // Foundation
         foundation: '../bower_components/foundation/js/foundation'

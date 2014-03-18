@@ -1,74 +1,41 @@
 <div class="row show-image">
     <div id="image-container" class="small-12 columns">
         <img class="image-full" src="{{path}}">
-        <a class="button" id="edit-button">
-            <i class="foundicon-tools"></i>
-        </a>
-        
-        
     </div>
-    
-    <ul id="demo">
-        <li data-val="BMW">
-          <div class="car"><div class="img-cont"><img src="http://mobiscroll.com/Content/img/BMW_logo.png" /></div>
-          <span>BMW</span></div>
-        </li>
-        <li data-val="Dacia">
-          <div class="car"><div class="img-cont"><img src="http://mobiscroll.com/Content/img/Dacia_logo.png" /></div>
-          <span>Dacia</span></div>
-        </li>
-        <li data-val="Ferrari">
-          <div class="car"><div class="img-cont"><img src="http://mobiscroll.com/Content/img/ferrari_logo.png" /></div>
-          <span>Ferrari</span></div>
-        </li>
-        <li data-val="Mercedes">
-          <div class="car"><div class="img-cont"><img src="http://mobiscroll.com/Content/img/mercedes_logo.png" /></div>
-          <span>Mercedes</span></div>
-        </li>
-        <li data-val="Opel">
-          <div class="car"><div class="img-cont"><img src="http://mobiscroll.com/Content/img/opel_logo.png" /></div>
-          <span>Opel</span></div>
-        </li>
-        <li data-val="Renault">
-          <div class="car"><div class="img-cont"><img src="http://mobiscroll.com/Content/img/renault_logo.png" /></div>
-          <span>Renault</span></div>
-        </li>
-        <li data-val="Volkswagen">
-          <div class="car"><div class="img-cont"><img src="http://mobiscroll.com/Content/img/volkswagen_logo.png" /></div>
-          <span>Volkswagen</span></div>
-        </li>
-    </ul>
     
     <div id="settings-modul" class="small-4 columns hide">
         <form>
-          <div class="row">
-            <div class="small-12 columns">
-              <label>Kategorie
-                <a class="button expand">{{category}}</a>
-              </label>
+            <div class="row">
+                <a class="button expand" id="remove-button">
+                    <i class="foundicon-trash"></i>
+                </a>
             </div>
-          </div>
-          <div class="row">
-            <div class="small-12 columns">
-              <label>Datum
-                <a class="button expand">{{time}}</a>
-              </label>
+            
+            <div class="row" id="categories-select">
+                <label>Kategorie</label>
             </div>
-            <div class="small-12 columns">
-              <label>Passende Artikeln
-                <a class="button expand">Hinzufügen</a>
-              </label>
+            
+            <div class="row" id="date-select">
+                <label>Datum</label>
             </div>
-          </div>
+            
+            <div class="row">
+                <label>Passende Artikeln</label>
+                <a class="button expand" id="add-relation-button">
+                    <i class="foundicon-plus"></i>
+                </a>
+            </div>
         </form>
+    </div>
+    
+    <div class="row hide" id="relation-categories-select">
+        sjflkjsafljsoio sfopeopiopipoi
     </div>
 </div>
 
-<div class="relating-images">
+<div id="relating-images">
     <div id="relating-images-label">
         Dieser Artikel passt mit folgenden Artikeln:
     </div>
 </div>
 
-<div id="categories-list">
-</div>

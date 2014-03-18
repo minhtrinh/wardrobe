@@ -231,7 +231,7 @@ module.exports = function (grunt) {
                         '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.android.css',
                         '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.android-ics.css',
                         '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.wp.css',
-                        '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.jqm.css',
+                        '<%= yeoman.app %>/bower_components/mobiscroll/css/mobiscroll.scroller.ios7.css',
                         '.tmp/styles/{,*/}*.css',
                         '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]

@@ -8,9 +8,7 @@ define([
     'mustache',
     'logging',
     'data',
-    'notification',
-    'hammerjs',
-    'jqHammer'
+    'notification'
 ], function ($, _, Backbone, JST, mustache, $logging, $data, $notification) {
     'use strict';
 
@@ -20,12 +18,11 @@ define([
         initialize: function() {
             _.bindAll(this, 'render', 'onConfirm', 'removeCategory',
                 'editCategory', 'closeEditMode', 'onTapAddCategory',
-                'onEditCaption', 'onHoldCategory');
+                'onEditCaption', 'onHoldCategory', 'nameIsValid');
 
             this.listenTo(this.collection, 'add', this.render);
             this.listenTo(this.collection, 'remove', this.render);
             this.listenTo(this.collection, 'change', this.render);
-            this.$el.hammer();
             this.selectedCategory = null;
         },
 
@@ -80,15 +77,19 @@ define([
 
             // Finish after click on Enter
             if (event.keyCode === 13) {
-                var value = event.target.value;
+                var value = event.target.value.trim();
                 $(event.target).hide();
-                if (value) {
+                if (value && thisView.nameIsValid(value)) {
                     thisView.collection.createOrUpdateModel({
                         id: id ? id : null,
                         name: value
                     });
                 }
             }
+        },
+
+        nameIsValid: function(value) {
+            return !_.contains(this.collection.pluck('name'), value);
         },
 
         onHoldCategory: function(event) {
@@ -145,13 +146,13 @@ define([
             $logging.d('categoriesSlide: Confirm ' + buttonId);
 
             switch(buttonId) {
-                case 1: // Delete
+            case 1: // Delete
                 this.removeCategory(this.selectedCategory);
                 break;
-                case 2: // Edit
+            case 2: // Edit
                 this.editCategory(this.selectedCategory);
                 break;
-                default: // Cancel
+            default: // Cancel
                 break;
             }
 

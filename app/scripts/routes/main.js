@@ -6,12 +6,13 @@ define([
     'logging',
     'data',
     'state',
+    'appView',
     'views/main',
     'views/topbar',
     'views/imagesGallery',
     'views/newestGallery',
     'views/details'
-], function ($, Backbone, $logging, $data, $state, MainView, Topbar, ImagesGallery, NewestGallery, Details) {
+], function ($, Backbone, $logging, $data, $state, AppView, MainView, Topbar, ImagesGallery, NewestGallery, Details) {
     'use strict';
 
     var MainRouter = Backbone.Router.extend({
@@ -42,8 +43,8 @@ define([
 
             // Render main view
             var mainView = new MainView();
-            $('.appContent').html(mainView.render().el);
-
+            // $('.appContent').html(mainView.render().el);
+            AppView.attachView($('.appContent'), mainView);
         },
         gallery: function(id) {
 
@@ -62,7 +63,8 @@ define([
             // Render images gallery of a category with images data
             $data.getImagesByCategory(id, function(images) {
                     var imagesGallery = new ImagesGallery({collection: images});
-                    $('.appContent').html(imagesGallery.render().el);
+                    // $('.appContent').html(imagesGallery.render().el);
+                    AppView.attachView($('.appContent'), imagesGallery);
                 }
             );
 
@@ -84,7 +86,8 @@ define([
             // Render images gallery of newest with images data (default: from last 7 days)
             $data.getLastestImages(7, function(images) {
                     var newestGallery = new NewestGallery({collection: images});
-                    $('.appContent').html(newestGallery.render().el);
+                    // $('.appContent').html(newestGallery.render().el);
+                    AppView.attachView($('.appContent'), newestGallery);
                 }
             );
         },
@@ -107,7 +110,8 @@ define([
             // Render images gallery of a category with images data
             $data.getImageById(id, function(image) {
                     var details = new Details({model: image});
-                    $('.appContent').html(details.render().el);
+                    // $('.appContent').html(details.render().el);
+                    AppView.attachView($('.appContent'), details);
                 }
             );
         }

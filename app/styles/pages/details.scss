@@ -15,17 +15,24 @@
 
 img .image-full {
     max-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.relating-images {
+#relation-categories-select {
+    position: absolute;
+    height: 150px;
+    width: 100%;
+    bottom: 0px;
+    background-color: black;
+}
+
+#relating-images {
     position: absolute;
     height: 180px;
     left: 0px;
     right: 0px;
     bottom: 0px;
-    white-space: nowrap;
-    overflow: auto;
-    overflow-y: hidden;
 }
 
 #relating-images-label {
@@ -33,12 +40,31 @@ img .image-full {
     bottom: 150px;
 }
 
-.relating-images > ul{
+#relating-images > div {
+    position: absolute;
+    height: 100%;
+    bottom: 0px;
+}
+
+#relating-images > div > ul{
     height: 150px;
-    display: inline-block;
-    align: center;
     margin-left: 0px;
-    margin-top: 40px;
+    margin-top: 30px;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+#relating-images > div > ul > li {
+    float: none;
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    border-width: 5px;
+    border-style: solid;
+}
+
+#relating-images > div > ul > li > a {
+
 }
 
 a.button#edit-button {
